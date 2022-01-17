@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/task-autocomplete-component/static/css/main.3e360b79.css",
+    "main.js": "/task-autocomplete-component/static/js/main.3aab5dbe.js",
+    "index.html": "/task-autocomplete-component/index.html",
+    "main.3e360b79.css.map": "/task-autocomplete-component/static/css/main.3e360b79.css.map",
+    "main.3aab5dbe.js.map": "/task-autocomplete-component/static/js/main.3aab5dbe.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3e360b79.css",
+    "static/js/main.3aab5dbe.js"
+  ]
+}
