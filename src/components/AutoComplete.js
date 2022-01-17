@@ -61,6 +61,8 @@ const AutoComplete = () => {
       setValue(suggestions[suggestionIndex]);
       setSuggestionIndex(0);
       setSuggestionsActive(false);
+      setSelected((selected) => [...selected, suggestions[suggestionIndex]]);
+      setValue("");
     }
   };
 
