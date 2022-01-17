@@ -82,37 +82,43 @@ const AutoComplete = () => {
     );
   };
 
-  const SelectedItems = () => {
+  const SelectedItems = (props) => {
+    const { item, id } = props;
     return (
       <>
-        {selected.map((item, index) => (
-          <li key={index}>
-            {item}
-            <IoIosClose
-              className="close"
-              alt="close icon"
-              onClick={handleRemove}
-            />
-          </li>
-        ))}
+        <li id={id}>
+          {item}
+          <IoIosClose
+            className="close"
+            alt="close icon"
+            onClick={(e) => handleRemove(id)}
+          />
+        </li>
       </>
     );
   };
 
-  const handleRemove = () => {
-    setSelected();
+  const handleRemove = (id) => {
+    const newList = selected.filter((item, itemId) => itemId !== id);
+    console.log(id);
+    setSelected(newList);
+    console.log(newList);
   };
 
   return (
     <div className="autocomplete">
-      <input
-        type="text"
-        value={value}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-      />
+      <div>
+        {selected.map((obj, index) => (
+          <SelectedItems key={index} item={obj} id={index} />
+        ))}
+        <input
+          type="text"
+          value={value}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
       {suggestionsActive && <Suggestions />}
-      <SelectedItems />
     </div>
   );
 };
