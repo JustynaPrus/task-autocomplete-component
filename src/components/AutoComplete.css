@@ -1,0 +1,11 @@
+.active {
+    background: lightgray;
+}
+
+.visible {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
