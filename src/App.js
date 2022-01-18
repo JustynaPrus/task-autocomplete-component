@@ -1,12 +1,12 @@
 import React from "react";
-import "./App.css";
 import Autocomplete from "./components/AutoComplete";
+import { Container } from "./App.styles";
 
 function App() {
   return (
-    <div className="App">
+    <Container>
       <Autocomplete />
-    </div>
+    </Container>
   );
 }
 

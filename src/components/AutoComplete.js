@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoIosClose } from "react-icons/io";
-import "./AutoComplete.css";
+import { Wrapper, InputContainer, StyledList } from "./AutoComplete.styles.js";
 
 const AutoComplete = () => {
   const [suggestions, setSuggestions] = useState([]);
@@ -68,7 +68,7 @@ const AutoComplete = () => {
 
   const Suggestions = () => {
     return (
-      <ul className="suggestions">
+      <StyledList>
         {suggestions.map((suggestion, index) => {
           return (
             <li
@@ -80,23 +80,24 @@ const AutoComplete = () => {
             </li>
           );
         })}
-      </ul>
+      </StyledList>
     );
   };
 
   const SelectedItems = (props) => {
     const { item, id } = props;
     return (
-      <>
+      <ul>
         <li id={id}>
           {item}
           <IoIosClose
             className="close"
             alt="close icon"
+            style={{ width: 20, height: 20 }}
             onClick={(e) => handleRemove(id)}
           />
         </li>
-      </>
+      </ul>
     );
   };
 
@@ -108,8 +109,10 @@ const AutoComplete = () => {
   };
 
   return (
-    <div className="autocomplete">
-      <div>
+    <Wrapper>
+      <h1>UI component for autocomplete</h1>
+      <h2>Choose names for your team members!</h2>
+      <InputContainer>
         {selected.map((obj, index) => (
           <SelectedItems key={index} item={obj} id={index} />
         ))}
@@ -119,9 +122,9 @@ const AutoComplete = () => {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
         />
-      </div>
+      </InputContainer>
       {suggestionsActive && <Suggestions />}
-    </div>
+    </Wrapper>
   );
 };
 
