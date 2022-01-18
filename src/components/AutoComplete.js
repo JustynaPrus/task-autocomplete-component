@@ -19,10 +19,8 @@ const AutoComplete = () => {
       .then((response) => response.json())
       .then((data) => setData(data.results));
   };
-  console.log(data);
 
   const names = data.map((item) => item.name.first);
-  console.log(names);
 
   const handleChange = (e) => {
     const query = e.target.value.toLowerCase();
@@ -44,7 +42,12 @@ const AutoComplete = () => {
     setSuggestionsActive(false);
     setValue("");
   };
-  console.log(selected);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSelected((selected) => [...selected, value]);
+    setValue("");
+  };
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 38) {
@@ -57,7 +60,7 @@ const AutoComplete = () => {
         return;
       }
       setSuggestionIndex(suggestionIndex + 1);
-    } else if (e.keyCode === 13) {
+    } else if (e.keyCode === 13 && suggestionIndex !== 0) {
       setValue(suggestions[suggestionIndex]);
       setSuggestionIndex(0);
       setSuggestionsActive(false);
@@ -103,9 +106,7 @@ const AutoComplete = () => {
 
   const handleRemove = (id) => {
     const newList = selected.filter((item, itemId) => itemId !== id);
-    console.log(id);
     setSelected(newList);
-    console.log(newList);
   };
 
   return (
@@ -116,12 +117,18 @@ const AutoComplete = () => {
         {selected.map((obj, index) => (
           <SelectedItems key={index} item={obj} id={index} />
         ))}
-        <input
-          type="text"
-          value={value}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        />
+        <form>
+          <input
+            type="text"
+            autoComplete="all"
+            value={value}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+          <button type="submit" onClick={handleSubmit}>
+            Dodaj
+          </button>
+        </form>
       </InputContainer>
       {suggestionsActive && <Suggestions />}
     </Wrapper>

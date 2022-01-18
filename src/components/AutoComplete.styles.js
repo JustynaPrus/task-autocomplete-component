@@ -57,6 +57,18 @@ export const InputContainer = styled.div`
     padding: 4px 0 4px 4px;
     margin: 2px;
   }
+  form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  button {
+    border: none;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 8px 16px;
+    background-color: #dcdcdc;
+  }
 `;
 
 export const StyledList = styled.ul`
