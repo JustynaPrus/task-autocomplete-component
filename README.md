@@ -1,1 +1,1 @@
-Live site: https://justynaprus.github.io/task-autocomplete-component/
+Live site URL: https://justynaprus.github.io/task-autocomplete-component/
